@@ -18,6 +18,15 @@
     }
   },
   {
+    "name": "test3",
+    "img": "img2",
+    "desc": "2 shield, -1 energy",
+    "modifiers": {
+      "energy": -1,
+      "shield": 2
+    }
+  },
+  {
     "name": "Gandalf",
     "img": "https://upload.wikimedia.org/wikipedia/en/e/e9/Gandalf600ppx.jpg",
     "desc": "99 damage, +10 energy",

@@ -55,6 +55,16 @@
             }
           },
           {
+            name: 'test',
+            img: 'img',
+            desc: '1 shield, -1 energy',
+            modifiers: {
+              damage: 0,
+              energy: -1,
+              shield: 2
+            }
+          },
+          {
             name: 'test2',
             img: 'img2',
             desc: '0 damage, +1 energy',
