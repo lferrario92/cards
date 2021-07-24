@@ -1,0 +1,38 @@
+[
+  {
+    "name": "test",
+    "img": "img",
+    "desc": "1 damage, -1 energy",
+    "modifiers": {
+      "damage": 1,
+      "energy": -1
+    }
+  },
+  {
+    "name": "test2",
+    "img": "img2",
+    "desc": "0 damage, +1 energy",
+    "modifiers": {
+      "damage": 0,
+      "energy": 1
+    }
+  },
+  {
+    "name": "Gandalf",
+    "img": "https://upload.wikimedia.org/wikipedia/en/e/e9/Gandalf600ppx.jpg",
+    "desc": "99 damage, +10 energy",
+    "modifiers": {
+      "damage": 99,
+      "energy": 10
+    }
+  },
+  {
+    "name": "Gandalf",
+    "img": "https://upload.wikimedia.org/wikipedia/en/e/e9/Gandalf600ppx.jpg",
+    "desc": "99 damage, +10 energy",
+    "modifiers": {
+      "damage": 99,
+      "energy": 10
+    }
+  }
+]
