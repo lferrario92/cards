@@ -1,6 +1,7 @@
 [
   {
     "name": "test",
+    "durability": 5,
     "img": "img",
     "desc": "1 damage, -1 energy",
     "modifiers": {
@@ -10,6 +11,7 @@
   },
   {
     "name": "test2",
+    "durability": 1,
     "img": "img2",
     "desc": "0 damage, +1 energy",
     "modifiers": {
@@ -19,6 +21,7 @@
   },
   {
     "name": "test3",
+    "durability": 1,
     "img": "img2",
     "desc": "2 shield, -1 energy",
     "modifiers": {
@@ -28,6 +31,7 @@
   },
   {
     "name": "Gandalf",
+    "durability": 2,
     "img": "https://upload.wikimedia.org/wikipedia/en/e/e9/Gandalf600ppx.jpg",
     "desc": "99 damage, +10 energy",
     "modifiers": {
@@ -37,6 +41,7 @@
   },
   {
     "name": "Gandalf",
+    "durability": 3,
     "img": "https://upload.wikimedia.org/wikipedia/en/e/e9/Gandalf600ppx.jpg",
     "desc": "99 damage, +10 energy",
     "modifiers": {

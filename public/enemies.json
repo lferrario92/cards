@@ -1,0 +1,24 @@
+[
+  {
+    "name": "Goblin",
+    "img": "img",
+    "desc": "Not real",
+    "loot": {},
+    "stats": {
+      "health": 6,
+      "energy": 4,
+      "shield": 2
+    }
+  },
+  {
+    "name": "Orc",
+    "img": "img",
+    "desc": "Truly real",
+    "loot": {},
+    "stats": {
+      "health": 10,
+      "energy": 4,
+      "shield": 0
+    }
+  }
+]

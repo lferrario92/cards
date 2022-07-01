@@ -4,6 +4,14 @@
     <div>
       player = {{ getPlayerStatus }}
     </div>
+    <div v-if="getCurrentEnemy">
+      enemy: {{ getCurrentEnemy }}
+    </div>
+    <div
+      v-if="battleEnded"
+    >
+      {{ result.message }}
+    </div>
     <div>
       <draggable class="field" group="cards" :list="field">
         field
@@ -38,52 +46,21 @@
     },
     computed: {
       ...mapGetters([
-        'getPlayerStatus',
+        'getPlayerStatus', 'getCurrentEnemy'
       ]),
     },
     data () {
       return {
         loaded: false,
-        hand: [
-          {
-            name: 'test',
-            img: 'img',
-            desc: '1 damage, -1 energy',
-            modifiers: {
-              damage: 1,
-              energy: -1
-            }
-          },
-          {
-            name: 'test',
-            img: 'img',
-            desc: '1 shield, -1 energy',
-            modifiers: {
-              damage: 0,
-              energy: -1,
-              shield: 2
-            }
-          },
-          {
-            name: 'test2',
-            img: 'img2',
-            desc: '0 damage, +1 energy',
-            modifiers: {
-              damage: 0,
-              energy: 1
-            }
-          },
-          {
-            name: 'Gandalf',
-            img: 'https://upload.wikimedia.org/wikipedia/en/e/e9/Gandalf600ppx.jpg',
-            desc: '99 damage, +10 energy',
-            modifiers: {
-              damage: 99,
-              energy: 10
-            }
-          },
-        ],
-        field: []
+        hand: [],
+        field: [],
+        battleEnded: false,
+        result: '',
+        results: {
+          won: {
+            message: 'You won!'
+          }
+        }
       }
     },
     mounted () {
@@ -94,14 +71,32 @@
         this.loaded = true
       })
     },
+    methods: {
+      endDuel (result) {
+        this.result = this.results[result]
+        this.battleEnded = true
+        this.$store.commit('setEnemy', null)
+      }
+    },
     watch: {
       field: {
         handler (change) {
           console.log(change)
+          if (!this.field.length) return
           let mods = this.field[0].modifiers
           Object.keys(mods).forEach(mod => {
             this.$store.commit(`${mod}Mutation`, mods[mod])
           })
+          if (this.getCurrentEnemy.stats.health <= 0) {
+            this.endDuel('won')
+          }
+          if (this.field[0].durability == 1) {
+            this.field = []
+            return
+          }
+          this.field[0].durability--
+          this.hand.push(this.field.pop())
+          this.field = []
         }
       }
     }

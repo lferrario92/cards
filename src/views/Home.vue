@@ -1,18 +1,45 @@
 <template>
   <div class="home">
     <img alt="Vue logo" src="../assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <div>
+      <ul>
+        <li
+          v-for="(enemy, index) in enemies"
+          :key="index"
+          @click="selectEnemy(index)"
+        >
+          {{ enemy.name }}
+        </li>
+      </ul>
+    </div>
   </div>
 </template>
 
 <script>
-// @ is an alias to /src
-import HelloWorld from '@/components/HelloWorld.vue'
+import axios from 'axios'
 
 export default {
   name: 'Home',
   components: {
-    HelloWorld
+  },
+  data () {
+    return {
+      enemies: []
+    }
+  },
+  mounted () {
+    axios({url: '/enemies.json', method: 'get'}).then(res => {
+      this.enemies = res.data
+    }).finally(() => {
+      this.loaded = true
+    })
+  },
+  methods: {
+    selectEnemy (index) {
+      this.$store.commit('setEnemy', this.enemies[index])
+
+      this.$router.push({name: 'duel'})
+    }
   }
 }
 </script>

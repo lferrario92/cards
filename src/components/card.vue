@@ -5,6 +5,7 @@
       <img class="cardImg" :src="card.img" alt="">
     </div>
     <div class="cardDesc">{{ card.desc }}</div>
+    <div class="cardDesc">Durability: {{ card.durability }}</div>
   </div>
 </template>
 

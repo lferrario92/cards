@@ -5,31 +5,49 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
-    health: 100,
-    energy: 4,
-    shield: 0
+    player: {
+      health: 100,
+      energy: 4,
+      shield: 0,
+    },
+    currentEnemy: {
+      stats: {
+        health: 100,
+        energy: 4,
+        shield: 0
+      }
+    }
   },
   getters: {
     getPlayerStatus: state => {
-      return `health: ${state.health}, energy: ${state.energy}, shield: ${state.shield}`
+      return state.player
+    },
+    getCurrentEnemy: state => {
+      return state.currentEnemy
     }
   },
   mutations: {
     damageMutation (state, damage) {
-      if (state.shield) {
-        if ((state.shield - damage) >= 0) {
-          state.shield -= damage
+      /* eslint-disable */
+      if (state.currentEnemy.stats.shield) {
+        if ((state.currentEnemy.stats.shield - damage) >= 0) {
+          state.currentEnemy.stats.shield -= damage
         } else {
-          state.health = state.health - (damage - state.shield)
-          state.shield = 0
+          state.currentEnemy.stats.health = state.currentEnemy.stats.health - (damage - state.currentEnemy.stats.shield)
+          state.currentEnemy.stats.shield = 0
         }
+      } else {
+        state.currentEnemy.stats.health = state.currentEnemy.stats.health - (damage)
       }
     },
     energyMutation (state, energy) {
-      state.energy += energy
+      state.player.energy += energy
     },
     shieldMutation (state, shield) {
-      state.shield += shield
+      state.player.shield += shield
+    },
+    setEnemy (state, enemy) {
+      state.currentEnemy = enemy
     }
   },
   actions: {
